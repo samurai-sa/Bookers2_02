@@ -1,0 +1,23 @@
+<div class="container px-5 px-sm-0">
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2 style="color:red"><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li style="color:red"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/profile', users: @users %>
+      <div class="mt-3">
+        <%= render 'books/form', book: @book %>
+      </div>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render 'books/list', users: @users %>
+    </div>
+  </div>
+</div>
