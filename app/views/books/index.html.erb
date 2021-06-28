@@ -1,17 +1,9 @@
 <div class="container px-5 px-sm-0">
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <h2 style="color:red"><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
-      <ul>
-        <% @book.errors.full_messages.each do |message| %>
-          <li style="color:red"><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'layouts/errors', obj: @book %>
+
   <div class="row">
     <div class="col-md-3">
-      <%= render 'users/profile', users: @users %>
+      <%= render 'users/profile', user: current_user %>
       <div class="mt-3">
         <%= render 'books/form', book: @book %>
       </div>
