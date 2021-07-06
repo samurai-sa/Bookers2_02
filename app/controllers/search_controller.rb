@@ -6,9 +6,9 @@ before_action :authenticate_user!
     @content = params[:content]
     @method = params[:method]
     if @model == 'user'
-    @records = User.search_for(@content, @method)
+      @records = User.search_for(@content, @method)
     else
-    @records = Book.search_for(@content, @method)
+      @records = Book.search_for(@content, @method)
     end
   end
 end
