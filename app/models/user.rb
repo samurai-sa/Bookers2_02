@@ -10,7 +10,10 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   attachment :profile_image
-  
+
+  # :follower → フォローする人
+  # :followed → フォローされる人
+
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # 自分がフォローする（与フォロー）側の関係性
@@ -31,7 +34,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
       User.where(name: content)
